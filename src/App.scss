@@ -10,5 +10,11 @@
 		background: lightseagreen;
 		width: 100vmin;
 		height: 100vmin;
+		position: relative;
+
+		.square {
+			position: absolute;
+			background: black;
+		}
 	}
 }

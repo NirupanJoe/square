@@ -1,51 +1,11 @@
-# Project Name
+# Display a board.
+	* The board should have light coloured background.
+	* The board should be a square.
+	* The size of the board to be maximum occupyable.
+	* The board should be aligned in a center position.
+	* The board size should be responsive while changing browser size.
 
-	Project description.
-
-## Keys
-
-* A short list of things to understand the package, better.
-
-## Notes
-
-* Though pnpm is the preferred package manager, package-lock is still kept to widen support.
-
-## Usage
-### Setup
-#### Linux / Mac
-```sh
-$ git clone https://github.com/Laufire/react-starter.git project-name
-$ cd project-name
-$ sh ./adopt.sh
-$ sh ./setup.sh
-```
-
-#### Windows
-```sh
-C:\> git clone https://github.com/Laufire/react-starter.git project-name
-C:\> cd project-name
-C:\> .\adopt.bat
-```
-
-### Development
-#### Linux, Windows & Mac
-```
-$ # Run all tests.
-$  pnpm run test-dev
-
-$ # Run a particular test (matching the given pattern).
-$ pnpm run test-dev -- --testPathPattern "target"
-
-$ # Run all tests with coverage.
-$  pnpm run test-ci
-```
-
-## ToDo
-
-* Have branches to allow for multiple templates.
-	* One for a clean one to start new projects.
-	* One with basic examples.
-
-* Audit the packages. It's not done, yet. Due to poor understanding of the dependencies.
-
-* Try moving away from create-react-app, as it introduces a lot of constraints, including reconfiguring jest.
+# Step for board
+	* For the board set background color as any light color in css.
+	* For the square of the board both width and height should be same value.
+	* By flex board will be at the center.

@@ -1,7 +1,14 @@
 .App {
 	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
 
-	button {
-		font-weight: bold;
+	.board {
+		background: lightseagreen;
+		width: 100vmin;
+		height: 100vmin;
 	}
 }

@@ -1,6 +1,7 @@
 import { rndBetween } from '@laufire/utils/random';
 
 const screenMaxSize = 100;
+const two = 2;
 
 const ObjectManager = {
 
@@ -9,8 +10,8 @@ const ObjectManager = {
 
 		return {
 			size: size,
-			x: Math.abs(rndBetween(0, screenMaxSize) - size),
-			y: Math.abs(rndBetween(0, screenMaxSize) - size),
+			x: rndBetween(size / two, screenMaxSize - (size / two)),
+			y: rndBetween(size / two, screenMaxSize - (size / two)),
 		};
 	},
 };

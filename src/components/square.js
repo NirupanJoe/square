@@ -1,8 +1,7 @@
 import { React } from 'react';
-import ObjectManager from '../services/objectManager';
 
 const Square = (context) => {
-	const { size, x, y } = ObjectManager.getPosition(context);
+	const { data: { size, x, y }} = context;
 	const style = {
 		width: `${ size }%`,
 		height: `${ size }%`,

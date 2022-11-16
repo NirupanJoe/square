@@ -1,19 +1,26 @@
 import { rndBetween } from '@laufire/utils/random';
 
-const screenMaxSize = 100;
+const maxSize = 100;
 const two = 2;
 
 const ObjectManager = {
 
-	getPosition: ({ config: { object: { size: { min, max }}}}) => {
+	getObject: ({ config: { object: { size: { min, max }}, maxLength },
+		state: { object }}) => {
 		const size = rndBetween(min, max);
 
-		return {
-			size: size,
-			x: rndBetween(size / two, screenMaxSize - (size / two)),
-			y: rndBetween(size / two, screenMaxSize - (size / two)),
-		};
+		return object.length < maxLength
+			? [...object,
+				{
+					size: size,
+					x: ObjectManager.rndPositionValue(size),
+					y: ObjectManager.rndPositionValue(size),
+				}]
+			: object;
 	},
+
+	rndPositionValue: (size) => rndBetween(size / two, maxSize - (size / two)),
+
 };
 
 export default ObjectManager;

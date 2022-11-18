@@ -8,6 +8,7 @@ const config = {
 
 	objects: {
 		square: {},
+		circle: {},
 	},
 };
 

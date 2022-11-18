@@ -1,5 +1,5 @@
 import { React } from 'react';
-import Square from './square';
+import Shape from './shape';
 
 const Board = (context) => {
 	const { state: { objects }} = context;
@@ -7,7 +7,7 @@ const Board = (context) => {
 	return (
 		<div className="board">
 			{ objects.map((data, key) =>
-				<Square key={ key } { ...{ ...context, data } }/>)}
+				<Shape key={ key } { ...{ ...context, data } }/>)}
 		</div>
 	);
 };

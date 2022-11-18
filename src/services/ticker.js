@@ -1,12 +1,20 @@
 import ObjectManager from './objectManager';
 
 const Ticker = {
-	start: (context) => {
-		const { config: { timeDelay }, patchState } = context;
+	masterLoop: [
+		'getObject',
+		'moveObject',
+	],
 
-		setInterval(() => patchState({
-			objects: ObjectManager.getObject(context),
-		}), timeDelay);
+	runMasterLoop: (context) => Ticker.masterLoop.forEach((fn) =>
+		context.patchState({
+			objects: ObjectManager[fn](context),
+		})),
+
+	start: (context) => {
+		const { config: { timeDelay }} = context;
+
+		setInterval(() => Ticker.runMasterLoop(context), timeDelay);
 	},
 };
 

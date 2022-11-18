@@ -24,6 +24,11 @@ const ObjectManager = {
 			: objects;
 	},
 
+	moveObject: ({ state: { objects }}) => objects.map((object) => ({
+		...object,
+		x: object.x + 1,
+	})),
+
 };
 
 export default ObjectManager;

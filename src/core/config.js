@@ -1,11 +1,16 @@
 const config = {
-	timeDelay: 1000,
+	timeDelay: 100,
 	maxLength: 10,
 	size: {
 		min: 5,
 		max: 10,
 	},
-
+	direction: [
+		{ x: 1 },
+		{ x: -1 },
+		{ y: 1 },
+		{ y: -1 },
+	],
 	objects: {
 		square: {},
 		circle: {},

@@ -1,7 +1,7 @@
 const config = {
 	timeDelay: 1000,
 	maxLength: 10,
-	object: {
+	objects: {
 		size: {
 			min: 5,
 			max: 10,

@@ -2,11 +2,11 @@ import { React } from 'react';
 import Square from './square';
 
 const Board = (context) => {
-	const { state: { object }} = context;
+	const { state: { objects }} = context;
 
 	return (
 		<div className="board">
-			{ object.map((data, key) =>
+			{ objects.map((data, key) =>
 				<Square key={ key } { ...{ ...context, data } }/>)}
 		</div>
 	);

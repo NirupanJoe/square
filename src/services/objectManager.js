@@ -5,18 +5,18 @@ const two = 2;
 
 const ObjectManager = {
 
-	getObject: ({ config: { object: { size: { min, max }}, maxLength },
-		state: { object }}) => {
+	getObject: ({ config: { objects: { size: { min, max }}, maxLength },
+		state: { objects }}) => {
 		const size = rndBetween(min, max);
 
-		return object.length < maxLength
-			? [...object,
+		return objects.length < maxLength
+			? [...objects,
 				{
 					size: size,
 					x: ObjectManager.rndPositionValue(size),
 					y: ObjectManager.rndPositionValue(size),
 				}]
-			: object;
+			: objects;
 	},
 
 	rndPositionValue: (size) => rndBetween(size / two, maxSize - (size / two)),

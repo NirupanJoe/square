@@ -1,5 +1,5 @@
 const seed = {
-	object: [],
+	objects: [],
 };
 
 export default seed;

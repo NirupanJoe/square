@@ -5,7 +5,7 @@ const Ticker = {
 		const { config: { timeDelay }, patchState } = context;
 
 		setInterval(() => patchState({
-			object: ObjectManager.getObject(context),
+			objects: ObjectManager.getObject(context),
 		}), timeDelay);
 	},
 };

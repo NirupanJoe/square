@@ -5,12 +5,12 @@ const config = {
 		min: 5,
 		max: 10,
 	},
-	direction: [
-		{ x: 1 },
-		{ x: -1 },
-		{ y: 1 },
-		{ y: -1 },
-	],
+	directions: {
+		top: -1,
+		bottom: 1,
+		left: 1,
+		right: -1,
+	},
 	objects: {
 		square: {},
 		circle: {},

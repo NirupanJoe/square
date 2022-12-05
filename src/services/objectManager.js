@@ -27,12 +27,23 @@ const ObjectManager = {
 
 	isXAxis: (direction) => direction === 'left' || direction === 'right',
 
-	moveObject: ({ state: { objects }, config: { directions }}) =>
-		objects.map((object) => ({
+	getMovingPosition: ({ config: { directions }, data }, axis) => (
+		axis >= maxSize + data.size
+			? Math.abs(maxSize - axis)
+			: axis <= -data.size
+				? axis + maxSize
+				: axis + directions[data.direction]
+	),
+
+	moveObject: (context) =>
+		context.state.objects.map((object) => ({
 			...object,
 			...ObjectManager.isXAxis(object.direction)
-				? { x: object.x + directions[object.direction] }
-				: { y: object.y + directions[object.direction] },
+				? { x: ObjectManager
+					.getMovingPosition({ ...context, data: object }, object.x) }
+				: { y: ObjectManager
+					.getMovingPosition({ ...context, data: object }, object.y) }
+			,
 		})),
 
 };

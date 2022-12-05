@@ -25,10 +25,12 @@ const ObjectManager = {
 			: objects;
 	},
 
+	isXAxis: (direction) => direction === 'left' || direction === 'right',
+
 	moveObject: ({ state: { objects }, config: { directions }}) =>
 		objects.map((object) => ({
 			...object,
-			...object.direction === 'left' || object.direction === 'right'
+			...ObjectManager.isXAxis(object.direction)
 				? { x: object.x + directions[object.direction] }
 				: { y: object.y + directions[object.direction] },
 		})),

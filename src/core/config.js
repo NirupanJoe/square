@@ -1,4 +1,5 @@
 const config = {
+	idLength: 6,
 	timeDelay: 100,
 	maxLength: 10,
 	size: {

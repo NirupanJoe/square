@@ -1,5 +1,5 @@
 import { keys } from '@laufire/utils/collection';
-import { rndBetween, rndValue } from '@laufire/utils/random';
+import { rndBetween, rndString, rndValue } from '@laufire/utils/random';
 
 const maxSize = 100;
 const two = 2;
@@ -9,14 +9,14 @@ const ObjectManager = {
 	rndPositionValue: (size) => rndBetween(size / two, maxSize - (size / two)),
 
 	getObject: ({ config: { objects: shape, size: { min, max },
-		maxLength, directions }, state: { objects }}) => {
+		maxLength, directions, idLength }, state: { objects }}) => {
 		const size = rndBetween(min, max);
-		const type = rndValue(keys(shape));
 
 		return objects.length < maxLength
 			? [...objects,
 				{
-					type: type,
+					id: rndString(idLength),
+					type: rndValue(keys(shape)),
 					size: size,
 					x: ObjectManager.rndPositionValue(size),
 					y: ObjectManager.rndPositionValue(size),
@@ -25,14 +25,14 @@ const ObjectManager = {
 			: objects;
 	},
 
-	isXAxis: (direction) => direction === 'left' || direction === 'right',
+	isXAxis: (direction) => ['left', 'right'].includes(direction),
 
 	getMovingPosition: ({ config: { directions }, data }, axis) => (
 		axis >= maxSize + data.size
 			? Math.abs(maxSize - axis)
-			: axis <= -data.size
-				? axis + maxSize
-				: axis + directions[data.direction]
+			: axis + (axis <= -data.size
+				? maxSize
+				: directions[data.direction])
 	),
 
 	moveObject: (context) =>

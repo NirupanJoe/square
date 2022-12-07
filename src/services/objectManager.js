@@ -9,22 +9,28 @@ const ObjectManager = {
 
 	rndPositionValue: (size) => rndBetween(size / two, maxSize - (size / two)),
 
-	getObject: ({ config: { objects: shape, size: { min, max },
-		maxLength, directions, idLength }, state: { objects }}) => {
+	addObject: ({ config: { idLength, size: { min, max },
+		objects, directions }}) => {
 		const size = rndBetween(min, max);
+		const type = rndValue(keys(objects));
 
-		return objects.length < maxLength
-			? [...objects,
-				{
-					id: rndString(idLength),
-					type: rndValue(keys(shape)),
-					size: size,
-					x: ObjectManager.rndPositionValue(size),
-					y: ObjectManager.rndPositionValue(size),
-					direction: rndValue(keys(directions)),
-				}]
-			: objects;
+		return (
+			{
+				...objects[type],
+				id: rndString(idLength),
+				type: type,
+				size: size,
+				x: ObjectManager.rndPositionValue(rndBetween(min, max)),
+				y: ObjectManager.rndPositionValue(rndBetween(min, max)),
+				direction: rndValue(keys(directions)),
+			}
+		);
 	},
+
+	getObject: (context) => (
+		context.state.objects.length < context.config.maxLength
+			? [...context.state.objects, ObjectManager.addObject(context)]
+			: context.state.objects),
 
 	isXAxis: (direction) => ['left', 'right'].includes(direction),
 

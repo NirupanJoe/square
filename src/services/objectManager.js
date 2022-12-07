@@ -29,9 +29,9 @@ const ObjectManager = {
 	isXAxis: (direction) => ['left', 'right'].includes(direction),
 
 	getMovingPosition: ({ config: { directions }, data }, axis) => (
-		axis >= maxSize + data.size
+		axis >= maxSize + (data.size / two)
 			? Math.abs(maxSize - axis)
-			: axis + (axis <= -data.size
+			: axis + (axis <= (-data.size / two)
 				? maxSize
 				: directions[data.direction])
 	),

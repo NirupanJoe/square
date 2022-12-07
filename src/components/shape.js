@@ -40,23 +40,13 @@ const dummyStyle = (context) => {
 	};
 };
 
-const Shape = (context) => {
-	const { data: { type }} = context;
-
-	return (
-		<>
-			<div
-				className={ `shape ${ type }` }
-				style={ getStyle(context) }
-				onClick={ () => context.actions.setRndColor(context.data) }
-			/>
-			<div
-				className={ `shape ${ type }` }
-				style={ dummyStyle(context) }
-				onClick={ () => context.actions.setRndColor(context.data) }
-			/>
-		</>
-	);
-};
+const Shape = (context) =>
+	[getStyle, dummyStyle].map((style, key) =>
+		<div
+			key={ key }
+			className={ `shape ${ context.data.type }` }
+			style={ style(context) }
+			onClick={ () => context.actions.setRndColor(context.data) }
+		/>);
 
 export default Shape;

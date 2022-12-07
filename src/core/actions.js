@@ -8,6 +8,10 @@ const actions = {
 	setMoveObject: (context) => ({
 		objects: ObjectManager.moveObject(context),
 	}),
+
+	setRndColor: (context) => ({
+		objects: ObjectManager.addRndColor(context),
+	}),
 };
 
 export default actions;

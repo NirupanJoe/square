@@ -5,24 +5,26 @@ import ProjectManager from '../services/projectManager';
 const two = 2;
 
 const styleType = {
-	triangle: (size) => ({
+	triangle: ({ size, color = '000' }) => ({
 		borderLeft: `${ size / two }vMin solid transparent`,
 		borderRight: `${ size / two }vMin solid transparent`,
-		borderBottom: `${ size }vMin solid`,
+		borderBottom: `${ size }vMin solid #${ color }`,
 		width: 0,
 		height: 0,
+		background: 'transparent',
 	}),
 };
 
 const getStyle = (context) => {
-	const { data: { size, x, y, type }} = context;
+	const { data: { size, x, y, type, color }} = context;
 
 	return {
 		width: `${ size }%`,
 		height: `${ size }%`,
 		top: `${ y }%`,
 		left: `${ x }%`,
-		...styleType[type] && styleType[type](size),
+		background: `#${ color }`,
+		...styleType[type] && styleType[type](context.data),
 	};
 };
 
@@ -43,8 +45,16 @@ const Shape = (context) => {
 
 	return (
 		<>
-			<div className={ `shape ${ type }` } style={ getStyle(context) }/>
-			<div className={ `shape ${ type }` } style={ dummyStyle(context) }/>
+			<div
+				className={ `shape ${ type }` }
+				style={ getStyle(context) }
+				onClick={ () => context.actions.setRndColor(context.data) }
+			/>
+			<div
+				className={ `shape ${ type }` }
+				style={ dummyStyle(context) }
+				onClick={ () => context.actions.setRndColor(context.data) }
+			/>
 		</>
 	);
 };

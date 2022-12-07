@@ -1,8 +1,9 @@
-import { keys } from '@laufire/utils/collection';
+import { equals, keys } from '@laufire/utils/collection';
 import { rndBetween, rndString, rndValue } from '@laufire/utils/random';
 
 const maxSize = 100;
 const two = 2;
+const endHex = 16;
 
 const ObjectManager = {
 
@@ -45,6 +46,16 @@ const ObjectManager = {
 					.getMovingPosition({ ...context, data: object }, object.y) }
 			,
 		})),
+
+	getColor: () => ({
+		color: Math.random().toString(endHex)
+			.slice(two, endHex / two),
+	}),
+
+	addRndColor: (context) => context.state.objects.map((object) => ({
+		...object,
+		...equals(object.id, context.data.id) && ObjectManager.getColor(),
+	})),
 
 };
 

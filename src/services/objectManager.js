@@ -3,7 +3,7 @@ import { rndBetween, rndString, rndValue } from '@laufire/utils/random';
 
 const maxSize = 100;
 const two = 2;
-const endHex = 16;
+const maxHue = 360;
 
 const ObjectManager = {
 
@@ -47,14 +47,13 @@ const ObjectManager = {
 			,
 		})),
 
-	getColor: () => ({
-		color: Math.random().toString(endHex)
-			.slice(two, endHex / two),
+	getHslColor: () => ({
+		color: `hsl(${ rndBetween(0, maxHue) } ${ rndBetween(0, maxSize) }% ${ rndBetween(0, maxSize) }%)`,
 	}),
 
 	addRndColor: (context) => context.state.objects.map((object) => ({
 		...object,
-		...equals(object.id, context.data.id) && ObjectManager.getColor(),
+		...equals(object.id, context.data.id) && ObjectManager.getHslColor(),
 	})),
 
 };

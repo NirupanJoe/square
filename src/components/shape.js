@@ -5,10 +5,10 @@ import ProjectManager from '../services/projectManager';
 const two = 2;
 
 const styleType = {
-	triangle: ({ size, color = '000' }) => ({
+	triangle: ({ size, color = 'black' }) => ({
 		borderLeft: `${ size / two }vMin solid transparent`,
 		borderRight: `${ size / two }vMin solid transparent`,
-		borderBottom: `${ size }vMin solid #${ color }`,
+		borderBottom: `${ size }vMin solid ${ color }`,
 		width: 0,
 		height: 0,
 		background: 'transparent',
@@ -23,7 +23,7 @@ const getStyle = (context) => {
 		height: `${ size }%`,
 		top: `${ y }%`,
 		left: `${ x }%`,
-		background: `#${ color }`,
+		background: `${ color }`,
 		...styleType[type] && styleType[type](context.data),
 	};
 };

@@ -14,6 +14,9 @@
  * The object size to be randomly taken inbetween 5 to 10.
  * Randomly sized objects are populated with a time gap of 1s.
  * There should be 10 random sized object.
+ * Move the object.
+ * Whlie the object move outside the board it should regenerate.
+ * Random background color while click the object.
 
 # Step for board
 
@@ -28,3 +31,6 @@
  * By the rdnBetween get the size.
  * For time gap use setInterval
  * Create a object with in the given length
+ * Move the object by its position.
+ * Keep the dupplicate object and the position distance is from original object, If the object is reach out of the board the position should be reseted to the other end of the same direction.
+ * Clicking the object change the color by color property.
